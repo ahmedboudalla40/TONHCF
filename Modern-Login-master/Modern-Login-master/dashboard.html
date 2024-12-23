@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard - Humanitarian Cooperation Fund</title>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()" id="langToggle">عربي</button>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="en">Your Dashboard</h1>
+            <h1 class="ar" style="display: none;">لوحة التحكم</h1>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3 class="en">Your Referral Code</h3>
+                <h3 class="ar" style="display: none;">رمز الإحالة الخاص بك</h3>
+                <div class="referral-code" id="referralCode">
+                    <!-- Filled by JavaScript -->
+                </div>
+                <button onclick="copyReferralCode()" class="en">Copy Code</button>
+                <button onclick="copyReferralCode()" class="ar" style="display: none;">نسخ الرمز</button>
+            </div>
+
+            <div class="stat-card">
+                <h3 class="en">Total Referrals</h3>
+                <h3 class="ar" style="display: none;">إجمالي الإحالات</h3>
+                <div class="stat-value" id="referralCount">0</div>
+            </div>
+
+            <div class="stat-card">
+                <h3 class="en">Total Earnings</h3>
+                <h3 class="ar" style="display: none;">إجمالي الأرباح</h3>
+                <div class="stat-value" id="totalEarnings">0 USDT</div>
+            </div>
+        </div>
+
+        <div class="referral-link-section">
+            <h3 class="en">Your Referral Link</h3>
+            <h3 class="ar" style="display: none;">رابط الإحالة الخاص بك</h3>
+            <div class="referral-link" id="referralLink">
+                <!-- Filled by JavaScript -->
+            </div>
+            <button onclick="copyReferralLink()" class="en">Copy Link</button>
+            <button onclick="copyReferralLink()" class="ar" style="display: none;">نسخ الرابط</button>
+        </div>
+
+        <div class="referral-info">
+            <h3 class="en">How it Works</h3>
+            <h3 class="ar" style="display: none;">كيف يعمل النظام</h3>
+            <ul class="en">
+                <li>Share your referral code with friends</li>
+                <li>Earn 90% of their monthly subscription (4.5 USDT)</li>
+                <li>Get paid automatically through Binance Pay</li>
+            </ul>
+            <ul class="ar" style="display: none;">
+                <li>شارك رمز الإحالة مع أصدقائك</li>
+                <li>اكسب 90% من اشتراكهم الشهري (4.5 دولار)</li>
+                <li>احصل على أرباحك تلقائياً عبر Binance Pay</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/binance-pay.js"></script>
+    <script src="js/referral.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', async () => {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const stats = referralSystem.getReferralStats(userId);
+            
+            document.getElementById('referralCode').textContent = stats.referralCode;
+            document.getElementById('referralCount').textContent = stats.referralCount;
+            document.getElementById('totalEarnings').textContent = `${stats.totalEarnings.toFixed(2)} USDT`;
+            document.getElementById('referralLink').textContent = `${window.location.origin}?ref=${stats.referralCode}`;
+        });
+
+        function copyReferralCode() {
+            const code = document.getElementById('referralCode').textContent;
+            navigator.clipboard.writeText(code);
+            alert('Referral code copied to clipboard!');
+        }
+
+        function copyReferralLink() {
+            const link = document.getElementById('referralLink').textContent;
+            navigator.clipboard.writeText(link);
+            alert('Referral link copied to clipboard!');
+        }
+    </script>
+</body>
+</html>

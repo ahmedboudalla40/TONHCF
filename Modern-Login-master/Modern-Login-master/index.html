@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <title>Humanitarian Cooperation Fund | Login</title>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()" id="langToggle">عربي</button>
+    </div>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form id="signupForm">
+                <h1 class="en">Create Account</h1>
+                <h1 class="ar" style="display: none;">إنشاء حساب</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span class="en">or use your email for registration</span>
+                <span class="ar" style="display: none;">أو سجل باستخدام بريدك الإلكتروني</span>
+                <input type="text" class="en-placeholder" name="name" placeholder="Name" required>
+                <input type="text" class="ar-placeholder" style="display: none;" name="name-ar" placeholder="الاسم" required>
+                <input type="email" class="en-placeholder" name="email" placeholder="Email" required>
+                <input type="email" class="ar-placeholder" style="display: none;" name="email-ar" placeholder="البريد الإلكتروني" required>
+                <input type="password" class="en-placeholder" name="password" placeholder="Password" required>
+                <input type="password" class="ar-placeholder" style="display: none;" name="password-ar" placeholder="كلمة المرور" required>
+                <input type="text" class="en-placeholder" name="referral" placeholder="Referral Code (Optional)">
+                <input type="text" class="ar-placeholder" style="display: none;" name="referral-ar" placeholder="رمز الإحالة (اختياري)">
+                <div class="subscription-info">
+                    <p class="en">Monthly Subscription: 5 USDT</p>
+                    <p class="ar" style="display: none;">الاشتراك الشهري: 5 دولار</p>
+                </div>
+                <button type="submit" class="en">Sign Up & Subscribe</button>
+                <button type="submit" class="ar" style="display: none;">تسجيل واشتراك</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1 class="en">Sign In</h1>
+                <h1 class="ar" style="display: none;">تسجيل الدخول</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span class="en">or use your account</span>
+                <span class="ar" style="display: none;">أو استخدم حسابك</span>
+                <input type="email" class="en-placeholder" placeholder="Email">
+                <input type="email" class="ar-placeholder" style="display: none;" placeholder="البريد الإلكتروني">
+                <input type="password" class="en-placeholder" placeholder="Password">
+                <input type="password" class="ar-placeholder" style="display: none;" placeholder="كلمة المرور">
+                <a href="#" class="en">Forgot Your Password?</a>
+                <a href="#" class="ar" style="display: none;">نسيت كلمة المرور؟</a>
+                <button class="en">Sign In</button>
+                <button class="ar" style="display: none;">دخول</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1 class="en">Welcome Back!</h1>
+                    <h1 class="ar" style="display: none;">مرحباً بعودتك!</h1>
+                    <p class="en">Enter your personal details to use all features</p>
+                    <p class="ar" style="display: none;">أدخل بياناتك الشخصية لاستخدام جميع الميزات</p>
+                    <button class="hidden en" id="login">Sign In</button>
+                    <button class="hidden ar" style="display: none;" id="loginAr">تسجيل الدخول</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1 class="en">Hello, Friend!</h1>
+                    <h1 class="ar" style="display: none;">مرحباً بك!</h1>
+                    <p class="en">Join our community and make a difference</p>
+                    <p class="ar" style="display: none;">انضم إلى مجتمعنا وكن جزءاً من التغيير</p>
+                    <button class="hidden en" id="register">Sign Up</button>
+                    <button class="hidden ar" style="display: none;" id="registerAr">إنشاء حساب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/binance-pay.js"></script>
+    <script src="js/referral.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
